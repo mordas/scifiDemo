@@ -15,11 +15,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        CalculateMovement();
+    }
+
+    void CalculateMovement()
+    {
+        
         float horizontalInput = Input.GetAxis("Horizontal");
         float vericalInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0, vericalInput);
         Vector3 velocity = direction * _speed;
         velocity.y -= _gravity;
+        // Переводим координаты из локальных в глобальные
+        velocity = transform.transform.TransformDirection(velocity);
         _controller.Move(velocity * Time.deltaTime);
     }
 }
