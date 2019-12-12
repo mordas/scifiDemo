@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private int maxAmmo = 50;
     private bool reloading = false;
     [SerializeField] private GameObject _uiManager;
+    public bool hasCoin = false;
     void Start()
     {
         _controller = GetComponent<CharacterController>();
